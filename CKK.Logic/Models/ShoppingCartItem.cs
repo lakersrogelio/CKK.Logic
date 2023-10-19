@@ -23,7 +23,7 @@ namespace CKK.Logic.Models
 
         }
 
-        public void Product(Product product)
+        public void SetProduct(Product product)
         {
             _product = product;
         }
