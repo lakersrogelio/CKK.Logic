@@ -11,3 +11,40 @@
   </ItemGroup>
 
 </Project>
+
+public class ShoppingCartItem
+{
+private Product _product;
+private int _quantity;
+
+public ShoppingCartItem(Product product, int quantity)
+{
+_product = product;
+_quantity = quantity;
+}
+
+public Product GetProduct()
+{
+return _product;
+}
+
+public void SetProduct(Product value)
+{
+_product = value;
+}
+
+public int GetQuantity()
+{
+return _quantity;
+}
+
+public void SetQuantity(int value)
+{
+_quantity = value;
+}
+
+public decimal GetTotal()
+{
+return _product.Price * _quantity;
+}
+}
