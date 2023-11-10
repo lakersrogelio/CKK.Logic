@@ -10,9 +10,9 @@ namespace CKK.Logic.Models
     {
         private Product _product;
         private int _quantity;
-        internal int Id;
-        internal int Quantity;
-        internal int Price;
+        
+        
+        
 
         public ShoppingCartItem(Product product, int quantity)
         {

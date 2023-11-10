@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace CKK.Logic.Models
 {
-    class ShoppingCart
+    public class ShoppingCart
     {
         private Customer _customer;
         private ShoppingCartItem? _product1;
@@ -21,20 +21,22 @@ namespace CKK.Logic.Models
 
         public int GetCustomerId()
         {
-            return _customer.Id;
+            return _customer.GetId();
         }
 
         public ShoppingCartItem? GetProductById(int id)
         {
-            if (_product1.Id == id)
+           
+            if      (_product1.GetProduct().GetId() == id )
             {
+                
                 return _product1;
             }
-            else if (_product2.Id == id)
+            else if (_product2.GetProduct().GetId()== id)
             {
                 return _product2;
             }
-            else if (_product3.Id == id)
+            else if (_product3.GetProduct().GetId()== id)
             {
                 return _product3;
             }
@@ -50,41 +52,90 @@ namespace CKK.Logic.Models
         }
 
         public ShoppingCartItem AddProduct(Product prod, int quantity)
+
         {
+
+            ShoppingCartItem item = new ShoppingCartItem(prod, quantity);
+
             if (quantity <= 0)
+
             {
-                throw new ArgumentException("Quantity must be greater than zero.");
+
+                return null;
+
             }
 
-            ShoppingCartItem? item = GetProductById(prod.Id);
 
-            if (item != null)
-            {
-                item.Quantity += quantity;
-            }
-            else
-            {
-                item = new ShoppingCartItem(prod, quantity);
 
-                if (_product1 == null)
-                {
-                    _product1 = item;
-                }
-                else if (_product2 == null)
-                {
-                    _product2 = item;
-                }
-                else if (_product3 == null)
-                {
-                    _product3 = item;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Shopping cart is full.");
-                }
+            if (_product1 != null && _product1.GetProduct().GetId() == prod.GetId())
+
+            {
+
+                int sum = _product1.GetQuantity() + quantity;
+
+                _product1.SetQuantity(sum);
+
+                return _product1;
+
             }
 
-            return item;
+            else if (_product2 != null && _product2.GetProduct().GetId() == prod.GetId())
+
+            {
+
+                int sum = _product2.GetQuantity() + quantity;
+
+                _product2.SetQuantity(sum);
+
+                return _product2;
+
+            }
+
+            else if (_product3 != null && _product3.GetProduct().GetId() == prod.GetId())
+
+            {
+
+                int sum = _product3.GetQuantity() + quantity;
+
+                _product3.SetQuantity(sum);
+
+                return _product3;
+
+            }
+
+
+
+            if (_product1 == null)
+
+            {
+
+                _product1 = item;
+
+                return _product1;
+
+            }
+
+            else if (_product2 == null)
+
+            {
+
+                _product2 = item;
+
+                return _product2;
+
+            }
+
+            else if (_product3 == null)
+
+            {
+
+                _product3 = item;
+
+                return _product3;
+
+            }
+
+            return null;
         }
 
         public ShoppingCartItem RemoveProduct(Product prod, int quantity)
@@ -94,13 +145,14 @@ namespace CKK.Logic.Models
                 throw new ArgumentException("Quantity must be greater than zero.");
             }
 
-            ShoppingCartItem? item = GetProductById(prod.Id);
+            ShoppingCartItem? item = GetProductById(prod.GetId());
 
             if (item != null)
             {
-                if (item.Quantity > quantity)
+                if (item.GetQuantity() > quantity)
                 {
-                    item.Quantity -= quantity;
+                   int diff = item.GetQuantity() - quantity;
+                    item.SetQuantity(diff);
                 }
                 else
                 {
@@ -120,8 +172,8 @@ namespace CKK.Logic.Models
                     item = null;
                 }
             }
-
             return item;
+
         }
 
         public decimal GetTotal()
@@ -130,17 +182,17 @@ namespace CKK.Logic.Models
 
             if (_product1 != null)
             {
-                total += _product1.Price * _product1.Quantity;
+                total += _product1.GetTotal();
             }
 
             if (_product2 != null)
             {
-                total += _product2.Price * _product2.Quantity;
+                total += _product2.GetTotal();
             }
 
             if (_product3 != null)
             {
-                total += _product3.Price * _product3.Quantity;
+                total += _product3.GetTotal();
             }
 
             return total;
