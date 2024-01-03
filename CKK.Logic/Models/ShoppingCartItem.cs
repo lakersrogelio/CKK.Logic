@@ -6,49 +6,50 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class ShoppingCartItem
+    public class ShoppingCartItem 
     {
-        private Product _product;
-        private int _quantity;
-        
-        
-        
+        public Product Product1 { get; set; }
+        public int Quantity { get; set; }
 
-        public ShoppingCartItem(Product product, int quantity)
+       
+        public ShoppingCartItem(Product product, int quantity) 
         {
-            _product = product;
-            _quantity = quantity;
+            Product1 = product;
+            Quantity = quantity;
         }
-
+  
         public Product GetProduct()
         {
-            return _product;
+            return Product1;
 
         }
 
         public void SetProduct(Product product)
         {
-            _product = product;
+            Product1 = product;
         }
 
         public int GetQuantity()
         {
-            return _quantity;
+            return Quantity;
         }
 
         public void SetQuantity(int quantity)
         {
-            _quantity = quantity;
+            Quantity = quantity;
         }
         public decimal GetTotal()
         {
-            var productPrice = _product.GetPrice();
+            var productPrice = Product1.GetPrice();
             var quantity = GetQuantity();
             productPrice = quantity * productPrice;
             return productPrice;
 
-        
         }
     }
-    }
+}
 
+
+
+        /*private Product _product;
+        private int _quantity;*/
