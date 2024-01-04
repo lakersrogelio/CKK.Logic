@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class Customer
+    public class Customer : Entity
     {
-        private int _id;
+        public string Address { get; set; }
+        /*private int _id;
         private string? _name;
         private string? _address;
 
@@ -41,6 +43,6 @@ namespace CKK.Logic.Models
         public void SetAddress(string address)
         {
             _address = address;
-        }
+        }*/
     }
 }

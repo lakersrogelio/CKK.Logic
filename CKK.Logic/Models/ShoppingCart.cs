@@ -10,7 +10,8 @@ namespace CKK.Logic.Models
     public class ShoppingCart
     {
         private readonly List<ShoppingCartItem> _products;
-        private Customer _customer;
+        public Customer _customer { get; set; }
+        public List<Product> Products { get; set; }
         public ShoppingCart(Customer cust)
         {
             _products = new List<ShoppingCartItem>();

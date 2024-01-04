@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,24 @@ namespace CKK.Logic.Models
 {
 
 
-    public class StoreItem
+    public class StoreItem : InventoryItem
     {
+        public StoreItem(Product product, int quantity)
+        {
+            
+            Product1 = product;
+            Quantity = quantity;
+        }
+    }
+
+}
+
 
         //private Product _product;
         //private int _quantity;
-        private Product _product;
-        private int _quantity;
-        public StoreItem(Product product, int quantity)
-        {
-            _product = product;
-            _quantity = quantity;
-        }
-
-        public Product GetProduct()
+        //private Product _product;
+        //private int _quantity;
+        /*public Product GetProduct()
         {
             return _product;
 
@@ -40,7 +45,4 @@ namespace CKK.Logic.Models
         public void SetQuantity(int quantity)
         {
             _quantity = quantity;
-        }
-    }
-}
-
+        }*/

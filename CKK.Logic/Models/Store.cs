@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,38 +8,37 @@ using System.Threading.Tasks;
 namespace CKK.Logic.Models
 {
 
-    public class Store
+    public class Store : Entity
     {
         public List<StoreItem> _items;
-
+        
         public Store()
         {
-            //Id = id;
-            //Name = name;
             _items = new List<StoreItem>();
         }
+         
 
-        private int Id;
-        private string Name;
+        /* private int Id;
+         private string Name;
 
-        public int GetId()
-        {
-            return Id;
-        }
-        public void SetId(int id)
-        {
-            Id = id;
-        }
+         public int GetId()
+         {
+             return Id;
+         }
+         public void SetId(int id)
+         {
+             Id = id;
+         }
 
-        public string? GetName()
-        {
-            return Name;
-        }
+         public string? GetName()
+         {
+             return Name;
+         }
 
-        public void SetName(string name)
-        {
-            Name = name;
-        }
+         public void SetName(string name)
+         {
+             Name = name;
+         }*/
 
         public StoreItem AddStoreItem(Product product, int quantity)
         {
@@ -47,10 +47,10 @@ namespace CKK.Logic.Models
                 return null;
             }
 
-            var existingItem = _items.FirstOrDefault(item => item.GetProduct().Id == product.Id);
+            var existingItem = _items.FirstOrDefault(item => item.Product1.Id == product.Id);
             if (existingItem != null)
             {
-            existingItem.SetQuantity(existingItem.GetQuantity() + quantity);
+            existingItem.Quantity = existingItem.Quantity + quantity;
                 return existingItem;
             }
 
@@ -61,16 +61,16 @@ namespace CKK.Logic.Models
 
         public StoreItem RemoveStoreItem(int productId, int quantity)
         {
-            var item = _items.FirstOrDefault(i => i.GetProduct().Id == productId);
+            var item = _items.FirstOrDefault(i => i.Product1.Id == productId);
             if (item == null)
             {
                 return null;
             }
 
-            item.SetQuantity(item.GetQuantity() - quantity);
-            if (item.GetQuantity() < 0)
+            item.Quantity = item.Quantity - quantity;
+            if (item.Quantity < 0)
             {
-                item.SetQuantity(0);
+                item.Quantity = 0;
             }
 
             return item;
@@ -79,7 +79,7 @@ namespace CKK.Logic.Models
         public StoreItem? FindStoreItemById(int id)
         {
 
-            return _items.FirstOrDefault(item => item.GetProduct().Id == id);
+            return _items.FirstOrDefault(item => item.Product1.Id == id);
 
         }
 
@@ -100,6 +100,7 @@ namespace CKK.Logic.Models
             public int Quantity { get; set; }
         */
     } 
+       
 }
 
 

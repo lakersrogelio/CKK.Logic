@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CKK.Logic", "CKK.Logic\CKK.Logic.csproj", "{2387BD9F-FBC8-4D81-BBE0-4A5F829B7527}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKK.Logic.tests", "CKK.Logic.tests\CKK.Logic.tests.csproj", "{6E28D2A9-90A5-418D-B6FF-A0FF46DA2781}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CKK.Logic.tests", "CKK.Logic.tests\CKK.Logic.tests.csproj", "{6E28D2A9-90A5-418D-B6FF-A0FF46DA2781}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
