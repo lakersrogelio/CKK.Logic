@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CKK.Logic.Models
 {
 
-    public class Store : Entity
+    public class Store : Entity, IStore
     {
         public List<StoreItem> _items;
         
@@ -16,30 +16,6 @@ namespace CKK.Logic.Models
         {
             _items = new List<StoreItem>();
         }
-         
-
-        /* private int Id;
-         private string Name;
-
-         public int GetId()
-         {
-             return Id;
-         }
-         public void SetId(int id)
-         {
-             Id = id;
-         }
-
-         public string? GetName()
-         {
-             return Name;
-         }
-
-         public void SetName(string name)
-         {
-             Name = name;
-         }*/
-
         public StoreItem AddStoreItem(Product product, int quantity)
         {
             if (quantity <= 0)
@@ -87,22 +63,34 @@ namespace CKK.Logic.Models
         {
             return _items;
         }
-
-        /*public class StoreItem
-        {
-            public StoreItem(Product product, int quantity)
-            {
-                Product = product;
-                Quantity = quantity;
-            }
-
-            public Product Product { get; set; }
-            public int Quantity { get; set; }
-        */
     } 
        
 }
+         
 
+
+
+        /* private int Id;
+         private string Name;
+
+         public int GetId()
+         {
+             return Id;
+         }
+         public void SetId(int id)
+         {
+             Id = id;
+         }
+
+         public string? GetName()
+         {
+             return Name;
+         }
+
+         public void SetName(string name)
+         {
+             Name = name;
+         }*/
 
 
     /*public class Store
@@ -203,3 +191,15 @@ namespace CKK.Logic.Models
         }
     }
 }*/
+
+        /*public class StoreItem
+        {
+            public StoreItem(Product product, int quantity)
+            {
+                Product = product;
+                Quantity = quantity;
+            }
+
+            public Product Product { get; set; }
+            public int Quantity { get; set; }
+        */

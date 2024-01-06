@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Xml.Linq;
 
 namespace CKK.Logic.Models
 {
-    public class ShoppingCart
+    public class ShoppingCart : IShoppingCart
     {
         private readonly List<ShoppingCartItem> _products;
         public Customer _customer { get; set; }
