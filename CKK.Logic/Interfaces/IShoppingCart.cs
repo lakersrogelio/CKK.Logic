@@ -1,4 +1,5 @@
-﻿using CKK.Logic.Models;
+﻿
+using CKK.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CKK.Logic.Interfaces
     public interface IShoppingCart
     {
         Customer _customer { get; set; }
-        List<Product> Products { get; set; }
+        //List<Product> Products { get; set; }
         int GetCustomerId();
         ShoppingCartItem AddProduct(Product prod, int quantity);
         ShoppingCartItem RemoveProduct(int id, int quantity);

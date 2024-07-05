@@ -7,27 +7,24 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
+    [Serializable]
     public class ShoppingCartItem : InventoryItem
-    {
-        /*public Product Product1 { get; set; }
-        public int Quantity { get; set; }*/
-
-       
+    { 
         public ShoppingCartItem(Product product, int quantity) 
         {
-            Product1 = product;
+            Product = product;
             Quantity = quantity;
         }
   
         public Product GetProduct()
         {
-            return Product1;
+            return Product;
 
         }
 
         public void SetProduct(Product product)
         {
-            Product1 = product;
+            Product = product;
         }
 
         public int GetQuantity()
@@ -41,7 +38,7 @@ namespace CKK.Logic.Models
         }
         public decimal GetTotal()
         {
-            var productPrice = Product1.Price;
+            var productPrice = Product.Price;
             var quantity = GetQuantity();
             productPrice = quantity * productPrice;
             return productPrice;
@@ -52,5 +49,4 @@ namespace CKK.Logic.Models
 
 
 
-        /*private Product _product;
-        private int _quantity;*/
+  

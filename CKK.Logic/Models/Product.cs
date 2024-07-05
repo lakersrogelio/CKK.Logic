@@ -1,4 +1,5 @@
-﻿using CKK.Logic.Interfaces;
+﻿using CKK.Logic.Exceptions;
+using CKK.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,27 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
+    [Serializable]
     public class Product : Entity
     {
-        public decimal Price { get; set; }
+        //public decimal Price { get; set; }
+        private decimal _price;
+
+        public decimal Price
+        {
+            get { return _price; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Invalid price: " + value);
+                }
+                _price = value;
+            }
+        }
+    }
+}
+
         /* private int _id;
          private string? _name;
          private decimal _price;
@@ -47,5 +66,3 @@ namespace CKK.Logic.Models
         {
             Price = price;
         }*/
-    }
-}

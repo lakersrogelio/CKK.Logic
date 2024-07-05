@@ -1,4 +1,5 @@
-﻿using CKK.Logic.Interfaces;
+﻿using CKK.Logic.Exceptions;
+using CKK.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-
     public class Store : Entity, IStore
     {
         public List<StoreItem> _items;
-        
+        private int _uniqueId = 1;
         public Store()
         {
             _items = new List<StoreItem>();
@@ -20,186 +20,108 @@ namespace CKK.Logic.Models
         {
             if (quantity <= 0)
             {
-                return null;
+                throw new InventoryItemStockTooLowException("Inventory too low");
             }
-
-            var existingItem = _items.FirstOrDefault(item => item.Product1.Id == product.Id);
+            if (product.Id == 0)
+            {
+                product.Id = _uniqueId++;
+            }
+            var existingItem = _items.FirstOrDefault(item => item.Product.Id == product.Id);
             if (existingItem != null)
             {
             existingItem.Quantity = existingItem.Quantity + quantity;
                 return existingItem;
             }
-
             var newItem = new StoreItem(product, quantity);
             _items.Add(newItem);
             return newItem;
         }
-
+        public void DeleteStoreItem(int id)
+        {
+            var item = _items.FirstOrDefault(i => i.Product.Id == id);
+            if (item != null)
+            {
+                _items.Remove(item);
+            }
+        }
         public StoreItem RemoveStoreItem(int productId, int quantity)
         {
-            var item = _items.FirstOrDefault(i => i.Product1.Id == productId);
+            if (quantity < 0) 
+            { 
+
+                throw new ArgumentOutOfRangeException("Quantity less than zero");
+
+            }
+            var item = _items.FirstOrDefault(i => i.Product.Id == productId);
             if (item == null)
             {
-                return null;
+                throw new ProductDoesNotExistException("Product does not exist");
             }
-
-            item.Quantity = item.Quantity - quantity;
-            if (item.Quantity < 0)
+            if (item.Quantity - quantity <= 0)
             {
-                item.Quantity = 0;
+            item.Quantity = 0;
             }
-
+            else
+            {
+                item.Quantity = item.Quantity - quantity;
+            }
             return item;
         }
-
         public StoreItem? FindStoreItemById(int id)
         {
-
-            return _items.FirstOrDefault(item => item.Product1.Id == id);
-
+            if (id < 0)
+            {
+               throw new InvalidIdException("Id is invalid");
+            }
+                
+            var item = _items.FirstOrDefault(item => item.Product.Id == id);
+            
+            if (item == null)
+            {
+               return null;
+            }
+            
+            if (item.Quantity <= 0)
+            {
+               item.Quantity = 0;
+            }
+            return item;
         }
-
         public List<StoreItem> GetStoreItems()
         {
             return _items;
         }
+        public List<StoreItem> GetAllProductsByName(string name)
+        {
+            return _items.Where(item => item.Product.Name.Contains(name)).ToList();
+        }
+
+        public List<StoreItem> GetProductsByQuantity()
+        {
+            return _items.OrderByDescending(item => item.Quantity).ToList();
+        }
+
+        public List<StoreItem> GetProductsByPrice()
+        {
+            return _items.OrderByDescending(item => item.Product.Price).ToList();
+        }
     } 
-       
 }
+
+            
+            
+
+            
+
+            
+
+
+            
+
+       
+
          
 
 
 
-        /* private int Id;
-         private string Name;
-
-         public int GetId()
-         {
-             return Id;
-         }
-         public void SetId(int id)
-         {
-             Id = id;
-         }
-
-         public string? GetName()
-         {
-             return Name;
-         }
-
-         public void SetName(string name)
-         {
-             Name = name;
-         }*/
-
-
-    /*public class Store
-    {
-        private int _id;
-        private string? _name;
-        private Product? _product1;
-        private Product? _product2;
-        private Product? _product3;
-
-        public int GetId()
-        {
-            return _id;
-        }
-
-        public void SetId(int id)
-        {
-            _id = id;
-        }
-
-        public string? GetName()
-        {
-            return _name;
-        }
-
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-
-        public void AddStoreItem(Product prod)
-        {
-            if (_product1 == null)
-            {
-                _product1 = prod;
-            }
-            else if (_product2 == null)
-            {
-                _product2 = prod;
-            }
-            else if (_product3 == null)
-            {
-                _product3 = prod;
-            }
-        }
-        public void RemoveStoreItem(int productNumber)
-        {
-            if (productNumber == 1)
-            {
-                _product1 = null;
-            }
-            else if (productNumber == 2)
-            {
-                _product2 = null;
-            }
-            else if (productNumber == 3)
-            {
-                _product3 = null;
-            }
-        }
-        public Product? GetStoreItem(int productNumber)
-        {
-            if (productNumber == 1)
-            {
-                return _product1;
-            }
-            else if (productNumber == 2)
-            {
-                return _product2;
-            }
-            else if (productNumber == 3)
-            {
-                return _product3;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public Product? FindStoreItemById(int id)
-        {
-            if (_product1 != null && _product1.GetId() == id)
-            {
-                return _product1;
-            }
-            else if (_product2 != null && _product2.GetId() == id)
-            {
-                return _product2;
-            }
-            else if (_product3 != null && _product3.GetId() == id)
-            {
-                return _product3;
-            }
-            else
-            {
-                return null;
-            }
-        }
-    }
-}*/
-
-        /*public class StoreItem
-        {
-            public StoreItem(Product product, int quantity)
-            {
-                Product = product;
-                Quantity = quantity;
-            }
-
-            public Product Product { get; set; }
-            public int Quantity { get; set; }
-        */
+    

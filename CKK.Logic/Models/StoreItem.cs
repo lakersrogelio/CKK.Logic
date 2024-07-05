@@ -8,41 +8,24 @@ using System.Threading.Tasks;
 namespace CKK.Logic.Models
 {
 
-
+    [Serializable]
     public class StoreItem : InventoryItem
     {
         public StoreItem(Product product, int quantity)
         {
-            
-            Product1 = product;
+            Product = product;
             Quantity = quantity;
         }
+
+        public override string ToString()
+        {
+            return $"#{Product.Id} {Product.Name}: {Quantity}";
+        }
+
+
     }
 
 }
 
 
-        //private Product _product;
-        //private int _quantity;
-        //private Product _product;
-        //private int _quantity;
-        /*public Product GetProduct()
-        {
-            return _product;
-
-        }
-
-        public void SetProduct(Product product)
-        {
-             _product = product;
-        }
-
-        public int GetQuantity()
-        {
-            return _quantity;
-        }
-
-        public void SetQuantity(int quantity)
-        {
-            _quantity = quantity;
-        }*/
+       

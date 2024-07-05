@@ -1,4 +1,5 @@
-﻿using CKK.Logic.Models;
+﻿
+using CKK.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,13 @@ namespace CKK.Logic.Interfaces
     {
         StoreItem AddStoreItem(Product product, int quantity);
         StoreItem RemoveStoreItem(int id, int quantity);
-        StoreItem FindStoreItemById(int id);
+        StoreItem? FindStoreItemById(int id);
         List<StoreItem> GetStoreItems();
+        void DeleteStoreItem(int id);
+        List<StoreItem> GetAllProductsByName(string name);
+        List<StoreItem> GetProductsByQuantity();
+        List<StoreItem> GetProductsByPrice();
+
+
     }
 }
