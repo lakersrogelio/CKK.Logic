@@ -153,13 +153,13 @@ namespace CKK.UI
             {
                 if (!string.IsNullOrWhiteSpace(itemName))
                 {
-                    int randomQuantity = random.Next(1, 11); // Generate a random quantity (adjust the range as needed)
+                    int randomQuantity = random.Next(1, 11); 
                     ListViewItem listViewItem = new ListViewItem(itemName.Trim());
-                    listViewItem.SubItems.Add(randomQuantity.ToString()); // Add the random quantity
+                    listViewItem.SubItems.Add(randomQuantity.ToString()); 
                     listViewItems.Items.Add(listViewItem);
                 }
             }
-            // Now add items to the ListView
+            
             foreach (var itemName in itemNames)
             {
                 if (!string.IsNullOrWhiteSpace(itemName))
@@ -183,7 +183,7 @@ namespace CKK.UI
         {
             string searchQuery = textBoxSearch.Text.ToLower();
             
-            //listViewItems.Items.Clear();
+            
 
 
             if (string.IsNullOrWhiteSpace(searchQuery))
@@ -198,7 +198,7 @@ namespace CKK.UI
         }
         private void DisplayItems(List<StoreItem> items)
         {
-            //listViewItems.Items.Clear()
+          
             foreach (var item in items)
             {
                 ListViewItem listViewItem = new ListViewItem(item.Product.Name);

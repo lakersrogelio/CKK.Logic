@@ -10,7 +10,7 @@ namespace CKK.Logic.Interfaces
 {
     public interface IShoppingCart
     {
-        Customer _customer { get; set; }
+        Customer Customer { get; set; }
         //List<Product> Products { get; set; }
         int GetCustomerId();
         ShoppingCartItem AddProduct(Product prod, int quantity);

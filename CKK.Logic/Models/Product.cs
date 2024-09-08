@@ -29,40 +29,40 @@ namespace CKK.Logic.Models
     }
 }
 
-        /* private int _id;
-         private string? _name;
-         private decimal _price;
+/* private int _id;
+ private string? _name;
+ private decimal _price;
 
 
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-       
-        public int GetId()
-        {
-            return Id;
-        }
-        public void SetId(int id)
-        {
-            Id = id;
-        }
+public int Id { get; set; }
+public string Name { get; set; }
+public decimal Price { get; set; }
 
-        public string? GetName()
-        {
-            return Name;
-        }
+public int GetId()
+{
+    return Id;
+}
+public void SetId(int id)
+{
+    Id = id;
+}
 
-        public void SetName(string name)
-        {
-            Name = name;
-        }
+public string? GetName()
+{
+    return Name;
+}
 
-        public decimal GetPrice()
-        {
-            return Price;
+public void SetName(string name)
+{
+    Name = name;
+}
 
-        }
-        public void SetPrice(decimal price)
-        {
-            Price = price;
-        }*/
+public decimal GetPrice()
+{
+    return Price;
+
+}
+public void SetPrice(decimal price)
+{
+    Price = price;
+}*/
