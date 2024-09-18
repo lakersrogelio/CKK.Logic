@@ -1,5 +1,5 @@
 ﻿
-using CKK.Logic.Models;
+/*using CKK.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,4 +19,4 @@ namespace CKK.Logic.Interfaces
         decimal GetTotal();
         List<ShoppingCartItem> GetProducts();
     }
-}
+}*/

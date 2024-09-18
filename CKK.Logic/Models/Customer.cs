@@ -1,10 +1,10 @@
-﻿using CKK.Logic.Interfaces;
+﻿//using CKK.Logic.Interfaces;
 using System;
 
 namespace CKK.Logic.Models
 {
     [Serializable]
-    public class Customer : Entity
+    public class Customer 
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,6 +12,18 @@ namespace CKK.Logic.Models
         public int ShoppingCartId { get; set; }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 /*using CKK.Logic.Interfaces;
 using System;
 using System.Collections.Generic;

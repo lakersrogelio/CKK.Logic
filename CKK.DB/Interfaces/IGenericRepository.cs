@@ -14,4 +14,6 @@ namespace CKK.DB.Interfaces
         int Update(T entity);
         int Delete(int id);
     }
+
+
 }

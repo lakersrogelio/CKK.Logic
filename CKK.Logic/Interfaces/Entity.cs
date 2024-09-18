@@ -1,4 +1,4 @@
-﻿using CKK.Logic.Exceptions;
+﻿/*using CKK.Logic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace CKK.Logic.Interfaces
       }
     }
     
-}
+}*/
 
         
         

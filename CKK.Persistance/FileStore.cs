@@ -1,23 +1,24 @@
 ﻿using CKK.Logic.Exceptions;
-using CKK.Logic.Interfaces;
+//using CKK.Logic.Interfaces;
 using CKK.Logic.Models;
 using CKK.Persistance.Interfaces;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
 namespace CKK.Persistance
 {
-    public class FileStore : IStore, ISavable, ILoadable
+    public class FileStore :  ISavable, ILoadable
     {
         public string FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + 
                        Path.DirectorySeparatorChar + "Persistance" + 
                        Path.DirectorySeparatorChar + "StoreItems.dat";
         
-        private List<StoreItem> Items;
+        private List<Product> Items;
         private int IdCounter = 1;
         public FileStore() 
         {
            
-            Items = new List<StoreItem>();
+            Items = new List<Product>();
             CreatePath();
             Save();
             Load();
@@ -159,7 +160,7 @@ namespace CKK.Persistance
            
         }
 
-        public List<StoreItem> GetProductsByQuantity()
+        public List<Product> GetProductsByQuantity()
         {
 
             for (int i = 0; i < Items.Count - 1; i++)
