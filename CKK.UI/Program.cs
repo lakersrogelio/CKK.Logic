@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Windows.Forms;
 using Dapper;
-using CKK.DB
+using CKK.DB;
 
 
 namespace CKK.UI

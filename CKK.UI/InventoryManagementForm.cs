@@ -118,7 +118,7 @@ namespace CKK.UI
             var product = _productRepository.GetById(id);
             if (product != null)
             {
-                _productRepository.Delete(id);
+                _productRepository.DeleteAsync(id);
                 MessageBox.Show("Item removed successfully!");
                 LoadItems(); 
             }
@@ -200,7 +200,7 @@ namespace CKK.UI
 
         public List<Product> GetAllProductsByName(string name)
         {
-            return _productRepository.GetByName(name);
+            return _productRepository.GetByNameAsync(string name);
         }
 
         public List<Product> GetProductsByQuantity()
